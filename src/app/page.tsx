@@ -1,9 +1,6 @@
 import InputForm from '@/components/input-form';
-import { env } from '@/lib/environment';
 
 export default function Home() {
-  console.log('env: ', env);
-
   return (
     <div className="flex flex-col items-center space-y-3">
       <h1 className="text-4xl text-white text-center">

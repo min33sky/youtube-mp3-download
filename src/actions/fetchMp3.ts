@@ -1,6 +1,5 @@
 'use server';
 
-import { env } from '@/lib/environment';
 import { DownloadResponse } from '@/lib/types';
 import axios from 'axios';
 
@@ -11,8 +10,8 @@ export default async function fetchMp3(url: string) {
       url: 'https://youtube-mp36.p.rapidapi.com/dl',
       params: { id: url },
       headers: {
-        'X-RapidAPI-Key': env['NEXT_PUBLIC_X-RAPID-API-KEY'],
-        'X-RapidAPI-Host': env['NEXT_PUBLIC_X-RAPID-API-HOST'],
+        'X-RapidAPI-Key': process.env['X-RAPID-API-KEY'],
+        'X-RapidAPI-Host': process.env['X-RAPID-API-HOST'],
       },
     };
 
