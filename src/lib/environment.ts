@@ -1,8 +1,8 @@
 import { z } from 'zod';
 
 const envSchema = z.object({
-  'X-RAPID-API-KEY': z.string(),
-  'X-RAPID-API-HOST': z.string(),
+  X_RAPID_API_KEY: z.string(),
+  X_RAPID_API_HOST: z.string(),
 });
 
 declare global {

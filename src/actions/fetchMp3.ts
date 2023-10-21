@@ -10,8 +10,8 @@ export default async function fetchMp3(url: string) {
       url: 'https://youtube-mp36.p.rapidapi.com/dl',
       params: { id: url },
       headers: {
-        'X-RapidAPI-Key': process.env['X-RAPID-API-KEY'],
-        'X-RapidAPI-Host': process.env['X-RAPID-API-HOST'],
+        'X-RapidAPI-Key': process.env.X_RAPID_API_KEY,
+        'X-RapidAPI-Host': process.env.X_RAPID_API_HOST,
       },
     };
 
