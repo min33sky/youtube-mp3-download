@@ -3,10 +3,8 @@ import { Button, buttonVariants } from '@/components/ui/button';
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
@@ -18,13 +16,14 @@ import fetchMp3 from '@/actions/fetchMp3';
 import { useState } from 'react';
 import Link from 'next/link';
 import { SearchIcon } from 'lucide-react';
+import { toast } from 'sonner';
 
 const formSchema = z.object({
   url: z.string(),
 });
 
 export default function InputForm() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [downloadLink, setDownloadLink] = useState('');
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -40,23 +39,20 @@ export default function InputForm() {
 
       const parsedUrl = getYoutubeUrlParser(formData.url);
 
-      if (!parsedUrl) {
-        return;
-      }
+      if (!parsedUrl) return;
 
       const res = await fetchMp3(parsedUrl);
 
       if (!res) {
-        alert('Something went wrong');
+        toast.error('에러가 발생했습니다.');
         return;
       }
 
-      console.log('res: ', res);
-
+      toast.success('변환 성공!');
       setDownloadLink(res.link);
     } catch (error) {
       console.error(error);
-      alert('Something went wrong');
+      toast.error('에러가 발생했습니다.');
     } finally {
       setIsLoading(false);
     }

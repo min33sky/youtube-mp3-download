@@ -17,7 +17,6 @@ export default async function fetchMp3(url: string) {
     };
 
     const response = await axios.request(options);
-    console.log(response.data);
     return response.data as DownloadResponse;
   } catch (error) {
     console.error(error);
