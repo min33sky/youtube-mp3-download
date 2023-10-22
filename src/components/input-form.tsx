@@ -59,6 +59,7 @@ export default function InputForm() {
   };
 
   console.log('downloadLink: ', downloadLink);
+  console.log('form: ', !form.getValues('url'));
 
   return (
     <div className="flex flex-col items-center space-y-4">
@@ -88,7 +89,7 @@ export default function InputForm() {
           />
           <Button
             isLoading={isLoading}
-            disabled={isLoading}
+            disabled={!form.getValues('url') || isLoading}
             type="submit"
             size={'lg'}
           >
