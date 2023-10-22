@@ -43,7 +43,8 @@ export default function InputForm() {
 
       const res = await fetchMp3(parsedUrl);
 
-      if (!res) {
+      if (res?.status !== 'ok') {
+        console.error('error: ', res);
         toast.error('에러가 발생했습니다.');
         return;
       }
@@ -59,7 +60,7 @@ export default function InputForm() {
   };
 
   console.log('downloadLink: ', downloadLink);
-  console.log('form: ', !form.getValues('url'));
+  // console.log('form: ', !form.getValues('url'));
 
   return (
     <div className="flex flex-col items-center space-y-4">
